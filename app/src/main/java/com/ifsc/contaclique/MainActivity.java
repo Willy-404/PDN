@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button b = findViewById(R.id.button);
 
-        b.setOnClickListener (v -> {//Seus baguio aqui
+        b.setOnClickListener (v -> {//SUA LAMBIDA AQUI!!!
         });
 
         b.setOnClickListener(v -> {});
