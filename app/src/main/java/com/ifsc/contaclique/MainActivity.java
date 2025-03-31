@@ -54,20 +54,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d("Ciclo de Vida","metodo onResume");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        Log.d("Ciclo de Vida","metodo onStop");
     }
 
     @Override
-    protected void onResumeFragments() {
-        super.onResumeFragments();
-    }
-
-    @Override
-    public void onActionModeFinished(ActionMode mode) {
-        super.onActionModeFinished(mode);
+    protected void onPause() {
+        super.onPause();
+        Log.d("Ciclo de Vida","metodo onPause");
     }
 }
