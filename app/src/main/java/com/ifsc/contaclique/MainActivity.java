@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     int i=0;
@@ -33,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
             peso = Double.parseDouble(edpeso.getText().toString());
             altura = Double.parseDouble(edaltura.getText().toString());
             imc = peso/altura;
+            //formatando resultado ##,##
+            DecimalFormat dc = new DecimalFormat("##.##");
 
-            tvresultado.setText(Double.toString(imc));
+            tvresultado.setText(dc.format(imc));
         });
 
     }
