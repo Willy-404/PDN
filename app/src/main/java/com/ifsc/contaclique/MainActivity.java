@@ -1,6 +1,8 @@
 package com.ifsc.contaclique;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,5 +43,31 @@ public class MainActivity extends AppCompatActivity {
             tvresultado.setText(dc.format(imc));
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("Ciclo de Vida","metodo onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+    }
+
+    @Override
+    public void onActionModeFinished(ActionMode mode) {
+        super.onActionModeFinished(mode);
     }
 }
