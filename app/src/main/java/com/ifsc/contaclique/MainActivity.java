@@ -1,5 +1,6 @@
 package com.ifsc.contaclique;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+
+                Intent i = new Intent(getApplicationContext(), PlanetaActivity.class);
+                i.putExtra("nome",nomes[position]);
+
+                startActivity(i);
             }
         });
     }
