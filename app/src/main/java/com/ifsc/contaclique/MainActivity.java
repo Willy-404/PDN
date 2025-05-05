@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.listView);
 
         //adaptador
-        ArrayAdapter<String> a = new ArrayAdapter(this,
+        ArrayAdapter<String> a = new ArrayAdapter(
+                this,
                 R.layout.item_lista,
                 R.id.textView,
                 nomes);
