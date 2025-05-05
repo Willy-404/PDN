@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.listView);
 
         //adaptador
-        ArrayAdapter<String> a = new ArrayAdapter(this,android.R.layout.simple_list_item_1,
-                android.R.id.text1,
+        ArrayAdapter<String> a = new ArrayAdapter(this,
+                R.layout.item_lista,
+                R.id.textView,
                 nomes);
         lv.setAdapter(a);
     }
