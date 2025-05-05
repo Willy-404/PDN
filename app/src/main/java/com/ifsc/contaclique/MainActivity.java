@@ -2,37 +2,36 @@ package com.ifsc.contaclique;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     int i=0;
 
+    String [] nomes = new String[]{"Anne","Fernanda","João1","João2","João3"};
+
+    ListView lv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        TextView tv = findViewById(R.id.textView);
-        tv.setText(getString(R.string.app_name));
+        //recuperar ListView
+        lv = findViewById(R.id.listView);
 
-        Button b = findViewById(R.id.button);
-
-        b.setOnClickListener (v -> {//SUA LAMBIDA AQUI!!!
-        });
-
-        b.setOnClickListener(v -> {});
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText(Integer.toString(i));
-                i++;
-            }
-        });
+        //adaptador
+        ArrayAdapter<String> a = new ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                nomes);
+        lv.setAdapter(a);
     }
 }
