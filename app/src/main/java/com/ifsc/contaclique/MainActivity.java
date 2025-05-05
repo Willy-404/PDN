@@ -2,6 +2,7 @@ package com.ifsc.contaclique;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -35,5 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.textView,
                 nomes);
         lv.setAdapter(a);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
+            }
+        });
     }
 }
