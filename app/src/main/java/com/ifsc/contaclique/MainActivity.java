@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     int i=0;
 
-    String [] nomes = new String[]{"Anne","Fernanda","João1","João2","João3"};
+    String [] nomes = new String[]{"Merucrio","Vunês","Trorre","Morte","Rupijer","Sarurno","UraAnus","Naruto","PlutãoSendoPlaneta"};
 
     ListView lv;
 
