@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 public class Planeta {
     String nome;
     //Bitmap imagem;
-    Integer imagme; //são recursos da pasta drawable R.drawable.nomeDaImagem
+    Integer imagem; //são recursos da pasta drawable R.drawable.nomeDaImagem
 
-    public Planeta(String nome, Integer imagme) {
+    public Planeta(String nome, Integer imagem) {
         this.nome = nome;
-        this.imagme = imagme;
+        this.imagem = imagem;
     }
 }
 

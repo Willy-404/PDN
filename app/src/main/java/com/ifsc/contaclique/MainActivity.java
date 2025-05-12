@@ -31,12 +31,17 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.listView);
 
         //adaptador
-        ArrayAdapter<String> a = new ArrayAdapter(
-                this,
+        //ArrayAdapter<String> a = new ArrayAdapter(
+        //        this,
+        //        R.layout.item_lista,
+        //        R.id.textView,
+        //        nomes);
+        PlanetaDao planetaDao = new PlanetaDao();
+        AdapterPlaneta ap = new AdapterPlaneta(this,
                 R.layout.item_lista,
-                R.id.textView,
-                nomes);
-        lv.setAdapter(a);
+                planetaDao.getPlaneta());
+        lv.setAdapter(ap);
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
