@@ -6,7 +6,7 @@ public class PlanetaDao {
     ArrayList<Planeta> planetas;
     public PlanetaDao(){
         this.planetas=new ArrayList<>();
-        String [] nomes = new String[]{"Merucrio","Vunês","Trorre","Morte","Rupijer","Sarurno","UraAnus","Naruto","PlutãoSendoPlaneta"};
+        String [] nomes = new String[]{"Merucrio","Vunês","Trorre","Morte","Rupijer","Sarurno","UraAnus","Naruto"};
         Integer[] imagens = new Integer[]{R.drawable.mercury,R.drawable.venus,
                 R.drawable.earth,R.drawable.mars,
                 R.drawable.jupter,R.drawable.saturn,
