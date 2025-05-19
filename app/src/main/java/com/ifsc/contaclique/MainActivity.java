@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     int i=0;
 
-    String [] nomes = new String[]{"Merucrio","Vunês","Trorre","Morte","Rupijer","Sarurno","UraAnus","Naruto","PlutãoSendoPlaneta"};
+    String [] nomes = new String[]{"Merucrio","Vunês","Trorre","Morte","Rupijer","Sarurno","UraAnus","Naruto"};
 
     ListView lv;
 
@@ -45,12 +45,16 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Planeta p = planetaDao.getPlaneta().get(position);
 
-                Intent i = new Intent(getApplicationContext(), PlanetaActivity.class);
-                i.putExtra("nome",nomes[position]);
+                // criando intenção para atividade
+                Intent i = new Intent(getApplication(), PlanetaActivity.class);
+
+                i.putExtra("planeta",p);
 
                 startActivity(i);
             }
         });
+
     }
 }

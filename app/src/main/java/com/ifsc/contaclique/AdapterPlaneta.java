@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class AdapterPlaneta extends ArrayAdapter<Planeta> {
@@ -25,16 +23,15 @@ public class AdapterPlaneta extends ArrayAdapter<Planeta> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         convertView = layoutInflater.inflate(mresourcer,parent,false);
         //preencher a item da view
         TextView tvnome = convertView.findViewById(R.id.textView);
-        ImageView im = convertView.findViewById(R.id.imageView);
+        ImageView im = convertView.findViewById(R.id.imageViewPlaneta);
 
         tvnome.setText(this.getItem(position).nome);
         im.setImageResource(this.getItem(position).imagem);
-
-
 
         return convertView;
     }

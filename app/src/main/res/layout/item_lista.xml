@@ -12,16 +12,16 @@
         android:layout_marginStart="26dp"
         android:text="TextView"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPlaneta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.808"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPlaneta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPlaneta"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewPlaneta"
         android:layout_width="140dp"
         android:layout_height="120dp"
         app:layout_constraintStart_toStartOf="parent"

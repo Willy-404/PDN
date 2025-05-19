@@ -1,13 +1,11 @@
 package com.ifsc.contaclique;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class PlanetaActivity extends AppCompatActivity {
 
@@ -16,15 +14,15 @@ public class PlanetaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_planeta);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        Bundle b=getIntent().getExtras();
-        b.get("nome");
-        TextView tv = findViewById(R.id.tvPlaneta);
-        tv.setText(b.get("nome").toString());
+        Bundle bundle = getIntent().getExtras();
+        //obtendo objeto serializado
+        Planeta p = (Planeta) bundle.getSerializable("planeta");
+
+        ImageView imageView = findViewById(R.id.imageViewPlaneta);
+        TextView textView = findViewById(R.id.tvPlaneta);
+
+        imageView.setImageResource(p.imagem);
+        textView.setText(p.nome);
     }
 }
