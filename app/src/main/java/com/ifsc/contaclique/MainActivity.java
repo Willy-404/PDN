@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        EdgeToEdge.enable(this);
 
         db = openOrCreateDatabase("banco",MODE_PRIVATE,null);
 
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         listView=findViewById(R.id.listView);
         buttonInsere.setOnClickListener(v->{
             String msg = editText.getText().toString();
+            listagemNotas();
             insereNota(msg);
         });
     }
@@ -46,19 +47,22 @@ public class MainActivity extends AppCompatActivity {
     public void listagemNotas(){
         Cursor cursor = db.rawQuery("SELECT * FROM notas",null);
         cursor.moveToFirst();
-        ArrayList<String> listaNotas = new ArrayList<String>();
-        while(cursor.isAfterLast()){
+        ArrayList<String> ListaNotas  = new ArrayList<String>();
+        while
+        (!cursor.isAfterLast()){
             int coluna = cursor.getColumnIndex("txt");
-            listaNotas.add(cursor.getString(coluna));
+            ListaNotas.add(cursor.getString(coluna));
             cursor.moveToNext();
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 android.R.id.text1,
-                listaNotas
+                ListaNotas
         );
+        listView.setAdapter(adapter);
     }
     public void insereNota(String txt){
+        db.execSQL("INSERT INTO notas (txt) VALUES('"+txt+"'); ");
         ContentValues cv = new ContentValues();
         cv.put("txt",txt);
         db.insert("notas",null,cv);
