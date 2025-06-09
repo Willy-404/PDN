@@ -1,5 +1,10 @@
 package com.ifsc.contaclique;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,31 +13,41 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     int i=0;
+    SensorManager mSensorManager;
+    Sensor sensor;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        tv = findViewById(R.id.textView);
 
-        TextView tv = findViewById(R.id.textView);
-        tv.setText(getString(R.string.app_name));
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        //metodo para verificar sensores
+        //mSensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
 
-        Button b = findViewById(R.id.button);
+        sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-        b.setOnClickListener (v -> {//SUA LAMBIDA AQUI!!!
-        });
+        mSensorManager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_NORMAL);
+    }
 
-        b.setOnClickListener(v -> {});
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText(Integer.toString(i));
-                i++;
-            }
-        });
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        tv.setText(Float.toString(sensorEvent.values[0]));
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 }
