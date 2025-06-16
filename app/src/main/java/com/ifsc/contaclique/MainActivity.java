@@ -1,38 +1,38 @@
 package com.ifsc.contaclique;
 
+import android.app.Application;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
-    int i=0;
+public class MainActivity extends AppCompatActivity {
+    PackageManager pm;
+    List<ApplicationInfo> applicationInfoList;
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        lv = findViewById(R.id.listView);
+        pm = getPackageManager();
 
-        TextView tv = findViewById(R.id.textView);
-        tv.setText(getString(R.string.app_name));
+        pm.getInstalledApplications(PackageManager.MATCH_ALL);
 
-        Button b = findViewById(R.id.button);
+        AppAdapter appAdapter = new AppAdapter(this,R.layout.app_item,applicationInfoList);
+        lv.setAdapter(appAdapter);
 
-        b.setOnClickListener (v -> {//SUA LAMBIDA AQUI!!!
-        });
-
-        b.setOnClickListener(v -> {});
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText(Integer.toString(i));
-                i++;
-            }
+        lv.setOnItemClickListener((adapterView, view, i, l) -> {
         });
     }
 }
