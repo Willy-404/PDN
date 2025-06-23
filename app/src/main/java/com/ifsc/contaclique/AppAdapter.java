@@ -16,27 +16,27 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class AppAdapter extends ArrayAdapter<ApplicationInfo> {
+
     int mresource;
-    public AppAdapter(@NonNull Context context, int resource, @NonNull List<ApplicationInfo> objects) {
+
+    public AppAdapter(@NonNull Context context, int resource, @NonNull List<ApplicationInfo> objects){
         super(context, resource, objects);
         mresource = resource;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //inflar o layout xml -> view
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-        View v = layoutInflater.inflate(mresource,parent,false);
-        // v é uma instancia de nosso app_litem.xml
+        View v = layoutInflater.inflate(mresource, parent, false);
         ImageView imageView = v.findViewById(R.id.imageView);
         TextView tv = v.findViewById(R.id.textView);
-        //recuperamos o item de dado para preencher a posição da lista
-        ApplicationInfo appinfo = getItem(position);
+        ApplicationInfo appInfo = getItem(position);
 
-        tv.setText(appinfo.loadLabel(getContext().getPackageManager()));
-        imageView.setImageDrawable(appinfo.loadIcon(getContext().getPackageManager()));
+        tv.setText(appInfo.loadLabel(getContext().getPackageManager()));
+        imageView.setImageDrawable(appInfo.loadIcon(getContext().getPackageManager()));
 
         return v;
     }
+
 }
