@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,10 +32,18 @@ public class MainActivity extends AppCompatActivity {
 
         pm = getPackageManager();
 
-        applicationInfoList = pm.getInstalledApplications(PackageManager.MATCH_ALL);
-        //pm.queryIntentActivities();
+        //applicationInfoList = pm.getInstalledApplications(PackageManager.MATCH_ALL);
+        Intent intentFilter = new Intent(Intent.ACTION_MAIN);
+        intentFilter.addCategory(Intent.CATEGORY_LAUNCHER);
 
-        pm.getInstalledApplications(PackageManager.MATCH_ALL);
+        List<ResolveInfo> lRinfo = pm.queryIntentActivities(intentFilter,0);
+        applicationInfoList = new ArrayList<>();
+        for (ResolveInfo r:lRinfo) {
+            applicationInfoList.add(r.providerInfo.applicationInfo);
+        }
+
+        //pm.queryIntentActivities(intentFilter,PackageManager.MATCH_ALL);
+        //pm.getInstalledApplications(PackageManager.MATCH_ALL);
 
         AppAdapter appAdapter = new AppAdapter(this,R.layout.app_item,applicationInfoList);
         lv.setAdapter(appAdapter);
