@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        TextView tv = findViewById(R.id.textView);
+        TextView tv = findViewById(R.id.tvLatitude);
         tv.setText(getString(R.string.app_name));
 
         Button b = findViewById(R.id.button);
